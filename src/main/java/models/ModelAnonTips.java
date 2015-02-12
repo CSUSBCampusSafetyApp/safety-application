@@ -22,7 +22,6 @@ public class ModelAnonTips {
     }
 
     public void save() {
-
         // TODO: Network Send Data. [HTTP]&&[POST]
 
     }
