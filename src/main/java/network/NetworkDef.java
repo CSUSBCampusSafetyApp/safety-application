@@ -5,5 +5,6 @@ package network;
  */
 public class NetworkDef {
     static public String SKENGO_PROTOCAL_STANDARD = "http://";
-    static public String DOMAIN = "";
+    static public String DOMAIN1 = "";
+    static public String DOMAIN2 = "";
 }

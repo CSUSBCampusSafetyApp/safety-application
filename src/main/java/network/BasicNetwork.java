@@ -2,7 +2,6 @@ package network;
 
 import android.os.AsyncTask;
 import android.util.Log;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -13,17 +12,12 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-
-/**
- * Created by seanx_000 on 2/12/2015.
- */
 
 public class BasicNetwork extends AsyncTask<URL, Integer, String> {
 
@@ -89,7 +83,6 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
 
     @Override
     protected String doInBackground(URL... params)  {
-        // TODO Auto-generated method stub
         String result = "";
 
         if(request_type && (http_parameters != null)) {
@@ -100,7 +93,6 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
             URL c_url = params[1];
             HttpURLConnection huc;
 
-
             boolean is_ok = false;
 
             try {
@@ -110,7 +102,6 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
                 huc.connect();
                 is_ok = (huc.getResponseCode() == HttpURLConnection.HTTP_OK );
                 huc.disconnect();
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -121,7 +112,6 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
                     Log.i("URLString",m_url.toString());
                     result = executeHttpPost(m_url.toString(), http_parameters);
                 } catch (Exception e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             else {
@@ -142,10 +132,8 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
                         Log.i("URLString",c_url.toString());
                         result = executeHttpPost(c_url.toString(), http_parameters);
                     } catch (Exception e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
-
             }
 
         }
@@ -163,35 +151,26 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
         general_run.execute(this, obj);
     }
 
-    // Public functions (below)
 
-    // constructor
+    /// constructor
     public BasicNetwork (boolean request_type) {
         this.request_type = request_type;
     }
 
-    // set parameters
+    /// set parameters
     public void setParameters( ArrayList<NameValuePair> http_parameters ) {
-
         this.http_parameters = http_parameters;
-
     }
 
-    // Function/Object Ran during the execution of request
-    public void postResultRun(IGeneralRun r) {
-        general_run = r;
-    }
-
+    /// Function/Object Ran during the execution of request
     public void postResultRun(IGeneralRun r, Object obj) {
         general_run = r;
         this.obj = obj;
     }
 
-    // return data as a jsonobject
+    /// return data as a jsonobject
     public JSONObject getJsonObject() {
-
         return json_object;
-
     }
 
 }

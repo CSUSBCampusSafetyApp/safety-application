@@ -1,8 +1,18 @@
 package models;
 
-/**
- * Created by seanx_000 on 2/12/2015.
- */
+import android.util.Log;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import network.BasicNetwork;
+import network.IGeneralRun;
+import network.SimpleNetwork;
+
 public class ModelAnonTips {
 
     private String subject;
@@ -13,16 +23,29 @@ public class ModelAnonTips {
         this.message = message;
     }
 
-    public void setSubject( String subject ) {
-        this.subject = subject;
-    }
-
-    public void setMessage( String message ) {
-        this.message = message;
-    }
-
     public void save() {
-        // TODO: Network Send Data. [HTTP]&&[POST]
+        ArrayList<NameValuePair> http_parameters;
+        http_parameters = new ArrayList<>();
 
+        http_parameters.add( new BasicNameValuePair("subject", subject));
+        http_parameters.add( new BasicNameValuePair("message", message));
+
+        SimpleNetwork.sendPost("createAnonymousTip", http_parameters, onAfter, "");
     }
+
+    private IGeneralRun onAfter = new IGeneralRun() {
+        @Override
+        public void execute(BasicNetwork request, Object o) {
+
+            JSONObject json_result = request.getJsonObject();
+            try {
+                if( json_result.getInt("result") == 1 ) {
+                    /// TODO: If connection succeeded then give user feedback.
+                    Log.i("Model Save: ModelAnonTips", "Success!");
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    };
 }
