@@ -17,7 +17,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:background="#FFFFFF"
-        android:textColor="@color/abc_background_cache_hint_selector_material_dark"
+        android:textColor="#000000"
         android:textSize="@dimen/abc_text_size_display_1_material"
         android:hint="Subject"
         android:padding="8dp" />
@@ -26,6 +26,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
+        android:gravity="top|left"
         android:ems="10"
         android:id="@+id/et_anonymoustips_message"
         android:layout_alignParentLeft="true"
@@ -35,7 +36,7 @@
         android:layout_below="@+id/et_anonymoustips_subject"
         android:layout_above="@+id/btn_anonymoustips_submit"
         android:background="#FFFFFF"
-        android:textColor="@color/abc_background_cache_hint_selector_material_dark"
+        android:textColor="#000000"
         android:textSize="27sp"
         android:hint="Message"
         android:padding="8dp"
@@ -52,6 +53,7 @@
         android:layout_alignRight="@+id/et_anonymoustips_message"
         android:layout_alignEnd="@+id/et_anonymoustips_message"
         android:background="#A8E36D"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
         android:layout_marginTop="4dp"/>
 
 </RelativeLayout>

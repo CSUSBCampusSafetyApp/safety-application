@@ -7,6 +7,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.conn.params.ConnManagerParams;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
@@ -21,10 +22,10 @@ import java.util.ArrayList;
 
 public class BasicNetwork extends AsyncTask<URL, Integer, String> {
 
-    private int HTTP_TIMEOUT = 10 * 1000; // 30 seconds (time on milliseconds)
+    private int HTTP_TIMEOUT = 10 * 1000; // 10 seconds (time on milliseconds)
     private HttpClient http_client = null;
     private ArrayList<NameValuePair> http_parameters = null;
-    private boolean request_type = false;
+    private String request_type = "post";
     private JSONObject json_object = null;
     private IGeneralRun general_run = null;
     private Object obj = null;
@@ -76,16 +77,51 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
                 }
             }
         }
-
-
     }
 
+    private String executeHttpPut(String url, ArrayList<NameValuePair> put_parameters) throws Exception  {
+        BufferedReader in = null;
+        try {
+
+            HttpClient client = getHttpClient();
+            HttpPut request = new HttpPut(url);
+            UrlEncodedFormEntity form_entity = new UrlEncodedFormEntity(put_parameters);
+            request.setEntity(form_entity);
+            HttpResponse response = client.execute(request);
+            in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+
+            StringBuilder sb = new StringBuilder("");
+            String line;
+            String NL = System.getProperty("line.seperator");
+            while( (line = in.readLine()) != null ) {
+                sb.append(line).append(NL);
+            }
+            in.close();
+
+            String result = sb.toString();
+            json_object = JsonData.Instance().parseString( result );
+            Log.i("Http Result (PUT)", result);
+
+            return result;
+
+        }
+        finally {
+            if( in != null ) {
+                try {
+                    in.close();
+                } catch ( IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
     @Override
     protected String doInBackground(URL... params)  {
         String result = "";
+        Log.i("Working", "sending...");
 
-        if(request_type && (http_parameters != null)) {
+        if( (request_type.compareTo("post")==0) && (http_parameters != null)) {
 
             // Check if URL Exist : NEEDS TO BE TESTED!!!!!!!!
             // Use with Parameters being sent at the moment!!!!!
@@ -98,7 +134,7 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
             try {
                 huc = (HttpURLConnection) m_url.openConnection();
                 huc.setConnectTimeout(HTTP_TIMEOUT);
-                huc.setRequestMethod("HEAD");
+                huc.setRequestMethod("POST");
                 huc.connect();
                 is_ok = (huc.getResponseCode() == HttpURLConnection.HTTP_OK );
                 huc.disconnect();
@@ -106,19 +142,20 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
                 e.printStackTrace();
             }
 
-            if( is_ok )
+            if( is_ok ) {
                 try {
-                    Log.i("NetworkThread","URL1 OK");
-                    Log.i("URLString",m_url.toString());
+                    Log.i("NetworkThread", "URL1 OK");
+                    Log.i("URLString", m_url.toString());
                     result = executeHttpPost(m_url.toString(), http_parameters);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
             else {
                 try {
                     huc = (HttpURLConnection) c_url.openConnection();
                     huc.setConnectTimeout(HTTP_TIMEOUT);
-                    huc.setRequestMethod("HEAD");
+                    huc.setRequestMethod("POST");
                     huc.connect();
                     is_ok = (huc.getResponseCode() == HttpURLConnection.HTTP_OK );
                     huc.disconnect();
@@ -138,6 +175,63 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
 
         }
 
+
+
+        if( (request_type.compareTo("put")==0) && (http_parameters != null)) {
+
+            // Check if URL Exist : NEEDS TO BE TESTED!!!!!!!!
+            // Use with Parameters being sent at the moment!!!!!
+            URL m_url = params[0];
+            URL c_url = params[1];
+            HttpURLConnection huc;
+
+            boolean is_ok = false;
+
+            try {
+                huc = (HttpURLConnection) m_url.openConnection();
+                huc.setConnectTimeout(HTTP_TIMEOUT);
+                huc.setRequestMethod("PUT");
+                huc.connect();
+                is_ok = (huc.getResponseCode() == HttpURLConnection.HTTP_OK );
+                huc.disconnect();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if( is_ok ) {
+                try {
+                    Log.i("NetworkThread", "URL1 OK");
+                    Log.i("URLString", m_url.toString());
+                    result = executeHttpPut(m_url.toString(), http_parameters);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                try {
+                    huc = (HttpURLConnection) c_url.openConnection();
+                    huc.setConnectTimeout(HTTP_TIMEOUT);
+                    huc.setRequestMethod("PUT");
+                    huc.connect();
+                    is_ok = (huc.getResponseCode() == HttpURLConnection.HTTP_OK );
+                    huc.disconnect();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if( is_ok ) {
+                    try {
+                        Log.i("NetworkThread", "URL2 OK");
+                        Log.i("URLString", c_url.toString());
+                        result = executeHttpPut(c_url.toString(), http_parameters);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+        }
+        Log.i("Done", result);
         return result;
     }
 
@@ -146,15 +240,16 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
         super.onPostExecute(result);
 
         json_object = JsonData.Instance().parseString( result );
-        Log.i("Http Post Result", result);
-
         general_run.execute(this, obj);
+        Log.i("Http Result", result);
     }
 
 
+
     /// constructor
-    public BasicNetwork (boolean request_type) {
-        this.request_type = request_type;
+    public BasicNetwork (String request_type) {
+        this.request_type = request_type.toLowerCase();
+        Log.i("Request Type", this.request_type);
     }
 
     /// set parameters

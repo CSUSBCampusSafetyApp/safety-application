@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 public class SimpleNetwork {
 
-    public static void sendPost(String action, ArrayList<NameValuePair> http_parameters, IGeneralRun onAfter, Object... obj) {
+    public static void send(String send_type, String action, ArrayList<NameValuePair> http_parameters, IGeneralRun onAfter, Object... obj) {
         // Internet request
-        final BasicNetwork request = new BasicNetwork( true );
+        final BasicNetwork request = new BasicNetwork(send_type);
         URL url1 = null; //URL object instance
         URL url2 = null; //URL object instance
 
@@ -31,11 +31,11 @@ public class SimpleNetwork {
             e.printStackTrace();
         }
 
-        request.postResultRun( onAfter, obj[0] );
+        request.postResultRun(onAfter, obj[0]);
         Log.i("SimpleNetwork Param:Object Check", Integer.toString(obj.length));
 
         // if the url is set then run the request
         if( url1 != null || url2 != null)
-            request.execute( url1, url2 );
+            request.execute(url1, url2);
     }
 }

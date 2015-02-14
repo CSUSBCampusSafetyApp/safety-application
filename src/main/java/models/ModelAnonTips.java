@@ -11,26 +11,43 @@ import java.util.ArrayList;
 
 import network.BasicNetwork;
 import network.IGeneralRun;
+import network.NetworkDef;
 import network.SimpleNetwork;
 
 public class ModelAnonTips {
 
     private String subject;
     private String message;
+    private IGeneralRun after_save;
+    private boolean success_save = false;
 
     public ModelAnonTips(String subject, String message) {
         this.subject = subject;
         this.message = message;
     }
 
+    @SuppressWarnings("unused")
     public void save() {
         ArrayList<NameValuePair> http_parameters;
         http_parameters = new ArrayList<>();
 
         http_parameters.add( new BasicNameValuePair("subject", subject));
         http_parameters.add( new BasicNameValuePair("message", message));
+        http_parameters.add( new BasicNameValuePair("test_email", NetworkDef.TEST_EMAIL));
 
-        SimpleNetwork.sendPost("createAnonymousTip", http_parameters, onAfter, "");
+        SimpleNetwork.send("PUT", "tips/send/format/json", http_parameters, null, "");
+    }
+
+    public void save(IGeneralRun run) {
+        ArrayList<NameValuePair> http_parameters;
+        http_parameters = new ArrayList<>();
+
+        http_parameters.add( new BasicNameValuePair("subject", subject));
+        http_parameters.add( new BasicNameValuePair("message", message));
+
+        after_save = run;
+        SimpleNetwork.send("PUT", "tips/send/format/json", http_parameters, onAfter, "");
+
     }
 
     private IGeneralRun onAfter = new IGeneralRun() {
@@ -40,12 +57,18 @@ public class ModelAnonTips {
             JSONObject json_result = request.getJsonObject();
             try {
                 if( json_result.getInt("result") == 1 ) {
-                    /// TODO: If connection succeeded then give user feedback.
                     Log.i("Model Save: ModelAnonTips", "Success!");
+                    success_save = true;
+                }
+                else {
+                    Log.i("Model Save: ModelAnonTips", "Failed!");
+                    success_save = false;
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+            after_save.execute(null, success_save);
         }
     };
 }

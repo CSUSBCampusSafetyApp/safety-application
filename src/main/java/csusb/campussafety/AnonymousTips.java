@@ -1,6 +1,7 @@
 package csusb.campussafety;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import models.ModelAnonTips;
+import network.BasicNetwork;
+import network.IGeneralRun;
 
 public class AnonymousTips extends Activity {
 
@@ -51,12 +54,32 @@ public class AnonymousTips extends Activity {
 
 
             if( exist_subject && exist_message ) {
+                Log.i("Button:Submit", "Submitted data!");
                 ModelAnonTips model = new ModelAnonTips(et_subject.getText().toString(), et_subject.getText().toString());
-                model.save();
-                Log.i("Button:Submit", "Successful Sending Data!");
+                model.save(after_save);
             }
             else {
                 Log.e("Button:Submit", "Unable to submit data!");
+            }
+        }
+    };
+
+    private IGeneralRun after_save = new IGeneralRun() {
+        @Override
+        public void execute(BasicNetwork request, Object o) {
+            // request = null
+            boolean success = (boolean)o;
+            if(success) {
+                Log.i("(Success)Going to...", "AnonymousTips");
+                final Intent page = new Intent( AnonymousTips.this, AnonymousTips.class );
+                startActivity( page );
+                finish();
+            }
+            else {
+                Log.i("(Failed)Going to...", "AnonymousTips");
+                final Intent page = new Intent( AnonymousTips.this, AnonymousTips.class );
+                startActivity( page );
+                finish();
             }
         }
     };

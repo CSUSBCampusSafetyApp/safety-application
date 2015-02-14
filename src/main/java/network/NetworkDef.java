@@ -1,10 +1,9 @@
 package network;
 
-/**
- * Created by seanx_000 on 2/12/2015.
- */
+@SuppressWarnings("unused")
 public class NetworkDef {
-    static public String SKENGO_PROTOCAL_STANDARD = "http://";
-    static public String DOMAIN1 = "";
-    static public String DOMAIN2 = "";
+    static public final String SKENGO_PROTOCAL_STANDARD = "http://";
+    static public final String DOMAIN1 = "";
+    static public final String DOMAIN2 = "";
+    static public final String TEST_EMAIL = "";
 }
