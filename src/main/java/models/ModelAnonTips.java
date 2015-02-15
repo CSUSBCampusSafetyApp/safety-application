@@ -44,6 +44,7 @@ public class ModelAnonTips {
 
         http_parameters.add( new BasicNameValuePair("subject", subject));
         http_parameters.add( new BasicNameValuePair("message", message));
+        http_parameters.add( new BasicNameValuePair("test_email", NetworkDef.TEST_EMAIL));
 
         after_save = run;
         SimpleNetwork.send("PUT", "tips/send/format/json", http_parameters, onAfter, "");

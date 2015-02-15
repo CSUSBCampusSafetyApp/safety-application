@@ -55,7 +55,7 @@ public class AnonymousTips extends Activity {
 
             if( exist_subject && exist_message ) {
                 Log.i("Button:Submit", "Submitted data!");
-                ModelAnonTips model = new ModelAnonTips(et_subject.getText().toString(), et_subject.getText().toString());
+                ModelAnonTips model = new ModelAnonTips(et_subject.getText().toString(), et_message.getText().toString());
                 model.save(after_save);
             }
             else {
