@@ -29,13 +29,13 @@ public class AnonymousTips extends Activity {
         Button btn_submit = (Button) findViewById(R.id.btn_anonymoustips_submit);
 
         /** Set click/touch listener for when the user presses down on button */
-        btn_submit.setOnClickListener(submit);
+        btn_submit.setOnClickListener(ocl_submit);
     }
 
     /** Set click/touch listener for when the user presses down on button.
      * This will make sure the user enters a subject and message before the
      * submit will take. */
-    private View.OnClickListener submit = new View.OnClickListener() {
+    private View.OnClickListener ocl_submit = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
