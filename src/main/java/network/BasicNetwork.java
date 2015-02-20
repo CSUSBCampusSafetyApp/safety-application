@@ -263,7 +263,8 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
 
         json_object = JsonData.Instance().parseString(result);
         Log.i("Http Result", result);
-        general_run.execute(this, obj);
+        if(general_run != null)
+            general_run.execute(this, obj);
     }
 
 

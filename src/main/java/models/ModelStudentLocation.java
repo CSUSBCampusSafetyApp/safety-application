@@ -45,11 +45,11 @@ public class ModelStudentLocation {
         http_parameters = new ArrayList<>();
 
         http_parameters.add( new BasicNameValuePair("first_name", first_name));
-        http_parameters.add( new BasicNameValuePair("last_name", last_name));
-        http_parameters.add( new BasicNameValuePair("first_name", phone_number));
-        http_parameters.add( new BasicNameValuePair("last_name", location));
-        http_parameters.add( new BasicNameValuePair("first_name", services));
-        http_parameters.add( new BasicNameValuePair("last_name", vehicle_license_number));
+        http_parameters.add( new BasicNameValuePair("last_name" , last_name));
+        http_parameters.add( new BasicNameValuePair("phone"     , phone_number));
+        http_parameters.add( new BasicNameValuePair("location"  , location));
+        http_parameters.add( new BasicNameValuePair("service"   , services));
+        http_parameters.add( new BasicNameValuePair("license"   , vehicle_license_number));
         http_parameters.add( new BasicNameValuePair("vehicle_year", Integer.toString(vehicle_year)));
         http_parameters.add( new BasicNameValuePair("vehicle_make", vehicle_make));
 
@@ -62,7 +62,13 @@ public class ModelStudentLocation {
         http_parameters = new ArrayList<>();
 
         http_parameters.add( new BasicNameValuePair("first_name", first_name));
-        http_parameters.add( new BasicNameValuePair("last_name", last_name));
+        http_parameters.add( new BasicNameValuePair("last_name" , last_name));
+        http_parameters.add( new BasicNameValuePair("phone"     , phone_number));
+        http_parameters.add( new BasicNameValuePair("location"  , location));
+        http_parameters.add( new BasicNameValuePair("service"   , services));
+        http_parameters.add( new BasicNameValuePair("license"   , vehicle_license_number));
+        http_parameters.add( new BasicNameValuePair("vehicle_year", Integer.toString(vehicle_year)));
+        http_parameters.add( new BasicNameValuePair("vehicle_make", vehicle_make));
 
         after_save = run;
         SimpleNetwork.send("PUT", "student_location/send/format/json", http_parameters, onAfter, "");

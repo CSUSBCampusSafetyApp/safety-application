@@ -17,8 +17,8 @@ public class StudentLocation extends Activity {
     private EditText et_firstname    = null;
     private EditText et_lastname     = null;
     private EditText et_phone_number = null;
-    private Spinner  spin_location    = null;
-    private Spinner  spin_service     = null;
+    private Spinner  spin_location   = null;
+    private Spinner  spin_service    = null;
     private EditText et_license      = null;
     private EditText et_vehicle_year = null;
     private EditText et_vehicle_make = null;
@@ -70,19 +70,21 @@ public class StudentLocation extends Activity {
     private View.OnClickListener cl_submit = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            m_studentloc = new ModelStudentLocation(et_firstname.getText().toString(), et_lastname.getText().toString(), et_phone_number.getText().toString(),
+                    spin_location.getSelectedItem().toString(), spin_service.getSelectedItem().toString(),
+                    et_license.getText().toString(), Integer.parseInt(et_vehicle_year.getText().toString()), et_vehicle_make.getText().toString());
 
+            m_studentloc.save();
         }
     };
 
     private AdapterView.OnItemSelectedListener oisl_item_chosen = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
         }
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
-
         }
     };
 
