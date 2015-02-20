@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import network.BasicNetwork;
 import network.IGeneralRun;
-import network.NetworkDef;
 import network.SimpleNetwork;
 
 public class ModelStudentLocation {
@@ -40,6 +39,7 @@ public class ModelStudentLocation {
         this.vehicle_make = vehicle_make;
     }
 
+    @SuppressWarnings("unused")
     public void save() {
         ArrayList<NameValuePair> http_parameters;
         http_parameters = new ArrayList<>();
@@ -56,6 +56,7 @@ public class ModelStudentLocation {
         SimpleNetwork.send("PUT", "student_location/send/format/json", http_parameters, null, "");
     }
 
+    @SuppressWarnings("unused")
     public void save(IGeneralRun run) {
         ArrayList<NameValuePair> http_parameters;
         http_parameters = new ArrayList<>();
@@ -74,11 +75,11 @@ public class ModelStudentLocation {
             JSONObject json_result = request.getJsonObject();
             try {
                 if( json_result.getInt("result") == 1 ) {
-                    Log.i("Model Save: ModelStudentLocation", "Success!");
+                    Log.i("(Save)ModelStudentLoc", "Success!");
                     success_save = true;
                 }
                 else {
-                    Log.i("Model Save: ModelStudentLocation", "Failed!");
+                    Log.i("(Save)ModelStudentLoc", "Failed!");
                     success_save = false;
                 }
             } catch (JSONException e) {

@@ -1,5 +1,6 @@
 package network;
 
+import android.app.Activity;
 import android.util.Log;
 
 import org.apache.http.NameValuePair;
@@ -9,6 +10,9 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class SimpleNetwork {
+
+    private static boolean enableProgress = false;
+    private static Activity activity = null;
 
     public static void send(String send_type, String action, ArrayList<NameValuePair> http_parameters, IGeneralRun onAfter, Object... obj) {
         // Internet request
@@ -31,11 +35,17 @@ public class SimpleNetwork {
             e.printStackTrace();
         }
 
+        request.enableProgressDialog(enableProgress, activity);
         request.postResultRun(onAfter, obj[0]);
-        Log.i("SimpleNetwork Param:Object Check", Integer.toString(obj.length));
+        Log.i("SimpleNet:Param Check", Integer.toString(obj.length));
 
         // if the url is set then run the request
         if( url1 != null || url2 != null)
             request.execute(url1, url2);
+    }
+
+    public static void enableProgress(boolean e, Activity a) {
+        enableProgress = e;
+        activity = a;
     }
 }

@@ -22,6 +22,11 @@ public class JsonData {
         try {
             json_obj = new JSONObject( content );
         } catch (JSONException e) {
+            try {
+                json_obj = new JSONObject("{result:0, error_msg: \"Unable to result from response. Connection parameters may be improperly set or data format may be incorrect. Contact mobile developer.\"}");
+            } catch (JSONException e1) {
+                e1.printStackTrace();
+            }
             Log.e("JSON Parser", "Error parsing data: " + e.toString());
         }
 

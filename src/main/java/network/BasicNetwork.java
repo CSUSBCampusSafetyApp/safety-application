@@ -1,5 +1,7 @@
 package network;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 import org.apache.http.HttpResponse;
@@ -29,6 +31,9 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
     private JSONObject json_object = null;
     private IGeneralRun general_run = null;
     private Object obj = null;
+    private Activity activity = null;
+    private ProgressDialog progress_dialog = null;
+    private boolean useProgress = false;
 
     private HttpClient getHttpClient() {
         if( http_client == null ) {
@@ -121,10 +126,9 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
         String result = "";
         Log.i("Working", "sending...");
 
-        if( (request_type.compareTo("post")==0) && (http_parameters != null)) {
+        // Use with Parameters being sent at the moment for PUT and POST!
 
-            // Check if URL Exist : NEEDS TO BE TESTED!!!!!!!!
-            // Use with Parameters being sent at the moment!!!!!
+        if( (request_type.compareTo("post")==0) && (http_parameters != null)) {
             URL m_url = params[0];
             URL c_url = params[1];
             HttpURLConnection huc;
@@ -175,12 +179,7 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
 
         }
 
-
-
         if( (request_type.compareTo("put")==0) && (http_parameters != null)) {
-
-            // Check if URL Exist : NEEDS TO BE TESTED!!!!!!!!
-            // Use with Parameters being sent at the moment!!!!!
             URL m_url = params[0];
             URL c_url = params[1];
             HttpURLConnection huc;
@@ -236,12 +235,35 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
     }
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+
+        if(useProgress) {
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    progress_dialog = ProgressDialog.show(activity, "", "Sending...", false);
+                }
+            });
+        }
+    }
+
+    @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
 
-        json_object = JsonData.Instance().parseString( result );
-        general_run.execute(this, obj);
+        if(useProgress) {
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    progress_dialog.cancel();
+                }
+            });
+        }
+
+        json_object = JsonData.Instance().parseString(result);
         Log.i("Http Result", result);
+        general_run.execute(this, obj);
     }
 
 
@@ -261,6 +283,11 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
     public void postResultRun(IGeneralRun r, Object obj) {
         general_run = r;
         this.obj = obj;
+    }
+
+    public void enableProgressDialog(boolean e, Activity a) {
+        this.useProgress = e;
+        this.activity    = a;
     }
 
     /// return data as a jsonobject

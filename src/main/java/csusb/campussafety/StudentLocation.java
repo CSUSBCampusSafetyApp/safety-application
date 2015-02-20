@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import models.ModelStudentLocation;
+
 @SuppressWarnings("all")
 public class StudentLocation extends Activity {
 
@@ -21,6 +23,8 @@ public class StudentLocation extends Activity {
     private EditText et_vehicle_year = null;
     private EditText et_vehicle_make = null;
     private Button btn_submit        = null;
+
+    private ModelStudentLocation m_studentloc = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
