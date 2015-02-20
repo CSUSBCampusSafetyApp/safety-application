@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/unnamed"
+    android:paddingBottom="90dp">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Services"
+        android:gravity="center"
+        android:textSize="35sp"
+        android:background="#000000"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="The University Police Department offers variety of services to the public"
+        android:id="@+id/textView"
+        android:textColor="#000000"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="10dp" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Live Scan Fingerprinting is done by appointment only. Please call (909) 537-3552 to schedule an appointment."
+            android:id="@+id/textView3"
+        android:textColor="#000000"
+            android:textSize="14dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="The Motorcycle Officer Program provides traffic enforcement on campus and public events such as new student orientations"
+        android:id="@+id/textView4"
+        android:textColor="#000000"
+        android:textSize="14dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="The escort program provides transportation to CSUSB students, faculty or visitors who are concerned about their safety. Escorts are provided by foot, department car, and state vehicle"
+        android:id="@+id/textView5"
+        android:textColor="#000000"
+        android:textSize="14dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="The University Police Explorers program mentors local youth who have an interest in law enforcement through a partnership with the San Bernardino Public Safety Academy."
+        android:id="@+id/textView6"
+        android:textColor="#000000"
+        android:textSize="14dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="The Chaplain Program offers spiritual support to University Police officers as well as campus community during a crisis."
+            android:id="@+id/textView7"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Invites community volunteers to work with the department by assisting with campus patrol, escort service and crime prevention efforts."
+            android:id="@+id/textView8"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="The annual event in which police officers, university staff and volunteers team up to assist needy families during the holidays."
+            android:id="@+id/textView9"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Provides free electronic alerts for accurate, important, and time sensitive information via text message, e-mail, and web. Get neighborhood-level public safety and health alerts and other relevant community information."
+            android:id="@+id/textView10"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp" />
+
+
+
+
+
+
+    </LinearLayout>
+</ScrollView>
