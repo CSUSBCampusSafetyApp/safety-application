@@ -1,0 +1,368 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" tools:context=".ResourcesActivity"
+    android:background="@drawable/csusb_background"
+    android:paddingBottom="90dp">
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:id="@+id/LinearLayout1">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#000000">
+
+                <TextView
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 android:padding="12dp"
+                 android:textAppearance="?android:attr/textAppearanceMedium"
+                 android:text="University Police Resources"
+                 android:textSize="20dp"
+                 android:id="@+id/textView13"
+                 android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="0dp">
+
+                    <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="The University Police Department strives to provide important information and helpful resources to the public including links for additional information."
+                    android:id="@+id/textView"
+                    android:textSize="12sp"
+                    android:textColor="#ff000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Victim Assistance Information"
+                        android:id="@+id/textView3"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+
+                    <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="•Sex Offender Database Links"
+                    android:id="@+id/textView9"
+                    android:textColor="#ff000000"
+                    android:textSize="12dp" />
+
+                    <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="•Downloadable Forms &amp; Documents"
+                    android:id="@+id/textView10"
+                    android:layout_below="@+id/textView9"
+                    android:layout_alignLeft="@+id/textView9"
+                    android:layout_alignStart="@+id/textView9"
+                    android:textColor="#ff020202"
+                    android:textSize="12dp" />
+
+                    <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="•Crime Prevention Tips"
+                    android:id="@+id/textView11"
+                    android:layout_below="@+id/textView10"
+                    android:layout_alignLeft="@+id/textView10"
+                    android:layout_alignStart="@+id/textView10"
+                    android:textColor="#ff000000"
+                    android:textSize="12dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Online Resources"
+                        android:id="@+id/textView12"
+                        android:textColor="#ff040404"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="California Law"
+                        android:id="@+id/textView33"
+                        android:textColor="#040404" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/textView34"
+                        android:autoLink="web"
+                        android:text="http://leginfo.ca.gov/calaw/"
+                        android:textColorLink="#ffffffff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="CSUSB Student Health Center"
+                        android:id="@+id/textView2"
+                        android:textColor="#ff040404" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/textView30"
+                        android:autoLink="web"
+                        android:text="http://healthcenter.csusb.edu/"
+                        android:textColorLink="#ffffffff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Counseling &amp; Psychological Services"
+                        android:id="@+id/textView14"
+                        android:textColor="#ff040404" />
+
+                    <TextView
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/textView28"
+                        android:autoLink="web"
+                        android:text="http://psychcounseling.csusb.edu/"
+                        android:textColorLink="#ffffffff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Women&apos;s Resource Center"
+                        android:id="@+id/textView15"
+                        android:textColor="#ff040404" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/textView16"
+                        android:autoLink="web"
+                        android:text="http://studentunion.csusb.edu/department/wrc/"
+                        android:textColorLink="#ffffffff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Rape, Abuse, Incest National Network"
+                        android:id="@+id/textView17"
+                        android:textColor="#ff040404" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/textView18"
+                        android:autoLink="web"
+                        android:text="http://rainn.org/"
+                        android:textColorLink="#ffffffff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Office on Violence Against Women"
+                        android:id="@+id/textView19"
+                        android:textColor="#ff040404" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/textView20"
+                        android:autoLink="web"
+                        android:text="http://justice.gov/ouv/"
+                        android:textColorLink="#ffffffff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="National Criminal Justice Reference Service"
+                        android:id="@+id/textView21"
+                        android:textColor="#ff040404" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/textView22"
+                        android:autoLink="web"
+                        android:text="http://ncjrs.gov/"
+                        android:textColorLink="#ffffff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Ombuds Services"
+                        android:id="@+id/textView23"
+                        android:textColor="#ff040404" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/textView24"
+                        android:autoLink="web"
+                        android:text="http://ombuds.csusb.edu/"
+                        android:textColorLink="#ffffff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Title IX &amp; Gender Equity"
+                        android:id="@+id/textView25"
+                        android:textColor="#ff040404" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/textView26"
+                        android:autoLink="web"
+                        android:text="http://titleix.csusb.edu/"
+                        android:textColorLink="#ffffff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="San Bernardino County 211"
+                        android:id="@+id/TextView27"
+                        android:textColor="#ff040404" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/textView29"
+                        android:autoLink="web"
+                        android:text="http://211sb.org/"
+                        android:textColorLink="#ffffff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Evacuation Chair Training Video"
+                        android:id="@+id/TextView31"
+                        android:textColor="#ff040404" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginBottom="20dp"
+                        android:id="@+id/textView32"
+                        android:autoLink="web"
+                        android:text="http://police.csusb.edu/Resources/EvacChairTraining/"
+                        android:textColorLink="#ffffff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Toll-Free Phone Numbers"
+                        android:id="@+id/textView27"
+                        android:textColor="#ff040404"
+                        android:textSize="17dp"
+                        android:layout_gravity="center_horizontal" />
+
+                    <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Federal Trade Commission Identity Theft Hotline:"
+                    android:id="@+id/textView8"
+                    android:layout_alignTop="@+id/textView2"
+                    android:layout_marginTop="15dp"
+                    android:textColor="#ff000000"
+                    android:textSize="12dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="8877-ID_THEFT"
+                        android:id="@+id/textView4"
+                        android:layout_marginBottom="10dp"
+                        android:layout_below="@+id/textView8"
+                        android:textSize="12dp"
+                        android:textColor="#ff000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Nation Center for Missing &amp; Exploited Children:"
+                        android:id="@+id/textView5"
+                        android:layout_below="@+id/textView4"
+                        android:textSize="12dp"
+                        android:textColor="#ff000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="800-843-5678"
+                        android:id="@+id/textView7"
+                        android:layout_below="@+id/textView5"
+                        android:layout_alignRight="@+id/textView6"
+                        android:layout_alignEnd="@+id/textView6"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="#ff010101"
+                        android:textSize="12sp" />
+
+                    <TextView
+                    android:layout_width="324dp"
+                    android:layout_height="31dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="National Clearinghouse for Alcohol &amp; Drug Information:          800-729-6686"
+                    android:id="@+id/textView6"
+                    android:textColor="#ff000000"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
