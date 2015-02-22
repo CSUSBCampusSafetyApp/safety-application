@@ -24,13 +24,13 @@ public class SimpleNetwork {
         request.setParameters(http_parameters);
 
         try {
-            url1 = new URL( NetworkDef.SKENGO_PROTOCAL_STANDARD + NetworkDef.DOMAIN1 + action );
+            url1 = new URL( NetworkDef.PROTOCAL_STANDARD + NetworkDef.DOMAIN1 + action );
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
 
         try {
-            url2 = new URL( NetworkDef.SKENGO_PROTOCAL_STANDARD + NetworkDef.DOMAIN2 + action );
+            url2 = new URL( NetworkDef.PROTOCAL_STANDARD + NetworkDef.DOMAIN2 + action );
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

@@ -10,10 +10,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
-import org.apache.http.conn.params.ConnManagerParams;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,7 +20,6 @@ import java.util.ArrayList;
 
 public class BasicNetwork extends AsyncTask<URL, Integer, String> {
 
-    private int HTTP_TIMEOUT = 10 * 1000; // 10 seconds (time on milliseconds)
     private HttpClient http_client = null;
     private ArrayList<NameValuePair> http_parameters = null;
     private String request_type = "post";
@@ -36,13 +31,8 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
     private boolean useProgress = false;
 
     private HttpClient getHttpClient() {
-        if( http_client == null ) {
-            http_client = new DefaultHttpClient();
-            final HttpParams params = http_client.getParams();
-            HttpConnectionParams.setConnectionTimeout(params, HTTP_TIMEOUT);
-            HttpConnectionParams.setSoTimeout(params, HTTP_TIMEOUT);
-            ConnManagerParams.setTimeout(params, HTTP_TIMEOUT);
-        }
+        if( http_client == null )
+            http_client = CHttpClient.getHttpClient();
 
         return http_client;
     }
@@ -128,6 +118,7 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
 
         // Use with Parameters being sent at the moment for PUT and POST!
 
+        int HTTP_TIMEOUT = 10000;
         if( (request_type.compareTo("post")==0) && (http_parameters != null)) {
             URL m_url = params[0];
             URL c_url = params[1];
@@ -136,12 +127,15 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
             boolean is_ok = false;
 
             try {
-                huc = (HttpURLConnection) m_url.openConnection();
-                huc.setConnectTimeout(HTTP_TIMEOUT);
-                huc.setRequestMethod("POST");
-                huc.connect();
-                is_ok = (huc.getResponseCode() == HttpURLConnection.HTTP_OK );
-                huc.disconnect();
+                    if(NetworkDef.PROTOCAL_STANDARD.compareTo("http://") == 0) {
+                        huc = (HttpURLConnection) m_url.openConnection();
+                        huc.setConnectTimeout(HTTP_TIMEOUT);
+                        huc.setRequestMethod("POST");
+                        huc.connect();
+                        is_ok = (huc.getResponseCode() == HttpURLConnection.HTTP_OK);
+                        huc.disconnect();
+                    } else
+                        is_ok = true;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -157,12 +151,15 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
             }
             else {
                 try {
-                    huc = (HttpURLConnection) c_url.openConnection();
-                    huc.setConnectTimeout(HTTP_TIMEOUT);
-                    huc.setRequestMethod("POST");
-                    huc.connect();
-                    is_ok = (huc.getResponseCode() == HttpURLConnection.HTTP_OK );
-                    huc.disconnect();
+                    if(NetworkDef.PROTOCAL_STANDARD.compareTo("http://") == 0) {
+                        huc = (HttpURLConnection) c_url.openConnection();
+                        huc.setConnectTimeout(HTTP_TIMEOUT);
+                        huc.setRequestMethod("POST");
+                        huc.connect();
+                        is_ok = (huc.getResponseCode() == HttpURLConnection.HTTP_OK);
+                        huc.disconnect();
+                    } else
+                        is_ok = true;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -187,12 +184,15 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
             boolean is_ok = false;
 
             try {
-                huc = (HttpURLConnection) m_url.openConnection();
-                huc.setConnectTimeout(HTTP_TIMEOUT);
-                huc.setRequestMethod("PUT");
-                huc.connect();
-                is_ok = (huc.getResponseCode() == HttpURLConnection.HTTP_OK );
-                huc.disconnect();
+                if(NetworkDef.PROTOCAL_STANDARD.compareTo("http://") == 0) {
+                    huc = (HttpURLConnection) m_url.openConnection();
+                    huc.setConnectTimeout(HTTP_TIMEOUT);
+                    huc.setRequestMethod("PUT");
+                    huc.connect();
+                    is_ok = (huc.getResponseCode() == HttpURLConnection.HTTP_OK);
+                    huc.disconnect();
+                } else
+                    is_ok = true;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -208,12 +208,15 @@ public class BasicNetwork extends AsyncTask<URL, Integer, String> {
             }
             else {
                 try {
-                    huc = (HttpURLConnection) c_url.openConnection();
-                    huc.setConnectTimeout(HTTP_TIMEOUT);
-                    huc.setRequestMethod("PUT");
-                    huc.connect();
-                    is_ok = (huc.getResponseCode() == HttpURLConnection.HTTP_OK );
-                    huc.disconnect();
+                    if (NetworkDef.PROTOCAL_STANDARD.compareTo("http://") == 0) {
+                        huc = (HttpURLConnection) c_url.openConnection();
+                        huc.setConnectTimeout(HTTP_TIMEOUT);
+                        huc.setRequestMethod("PUT");
+                        huc.connect();
+                        is_ok = (huc.getResponseCode() == HttpURLConnection.HTTP_OK);
+                        huc.disconnect();
+                    } else
+                        is_ok = true;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

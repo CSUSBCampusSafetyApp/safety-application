@@ -73,7 +73,6 @@ public class AnonymousTips extends Activity {
                         .setPositiveButton("Continue", alertdialog_oncontinue)
                         .setNegativeButton("Stop", null)
                         .setCancelable(false).show(); // User can't cancel by touching off dialog box
-
             }
             else {
                 Log.e("Button:Submit", "Unable to submit data!");
