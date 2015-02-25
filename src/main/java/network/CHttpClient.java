@@ -16,7 +16,11 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
-import org.apache.http.conn.ssl.SSLSocketFactory;
+
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
 
 
 public class CHttpClient {
@@ -32,7 +36,6 @@ public class CHttpClient {
             HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
             HttpProtocolParams.setContentCharset(params, HTTP.DEFAULT_CONTENT_CHARSET);
             HttpProtocolParams.setUseExpectContinue(params, true);
-            HttpProtocolParams.setUserAgent(params, "MeneameAndroid/0.1.6");
 
             ConnPerRoute connPerRoute = new ConnPerRouteBean(12);
             ConnManagerParams.setMaxConnectionsPerRoute(params, connPerRoute);
@@ -47,7 +50,11 @@ public class CHttpClient {
 
             SchemeRegistry schReg = new SchemeRegistry();
             schReg.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-            schReg.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+            try {
+                schReg.register(new Scheme("https", TrustAllSSLSocketFactory.getDefault(), 443));
+            } catch (KeyManagementException | NoSuchAlgorithmException | KeyStoreException | UnrecoverableKeyException e) {
+                e.printStackTrace();
+            }
             ClientConnectionManager conMgr = new ThreadSafeClientConnManager(params, schReg);
             c_httpClient = new DefaultHttpClient(conMgr, params);
         }
