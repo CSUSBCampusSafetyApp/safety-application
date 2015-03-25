@@ -19,7 +19,8 @@ public class ModelStudentLocation {
     private String first_name;
     private String last_name;
     private String phone_number;
-    private String location;
+    private String latitude;
+    private String longitude;
     private String services;
     private String vehicle_license_number;
     private int    vehicle_year;
@@ -27,12 +28,13 @@ public class ModelStudentLocation {
     private IGeneralRun after_save;
     private boolean success_save = false;
 
-    public ModelStudentLocation(String first_name, String last_name, String phone_number, String location, String services, String vehicle_license_number,
+    public ModelStudentLocation(String first_name, String last_name, String phone_number, String latitude,String longitude, String services, String vehicle_license_number,
                                 int vehicle_year, String vehicle_make) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.phone_number = phone_number;
-        this.location = location;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.services = services;
         this.vehicle_license_number = vehicle_license_number;
         this.vehicle_year = vehicle_year;
@@ -47,7 +49,8 @@ public class ModelStudentLocation {
         http_parameters.add( new BasicNameValuePair("first_name", first_name));
         http_parameters.add( new BasicNameValuePair("last_name" , last_name));
         http_parameters.add( new BasicNameValuePair("phone"     , phone_number));
-        http_parameters.add( new BasicNameValuePair("location"  , location));
+        http_parameters.add( new BasicNameValuePair("latitude"  , latitude));
+        http_parameters.add( new BasicNameValuePair("longitude" , longitude));
         http_parameters.add( new BasicNameValuePair("service"   , services));
         http_parameters.add( new BasicNameValuePair("license"   , vehicle_license_number));
         http_parameters.add( new BasicNameValuePair("vehicle_year", Integer.toString(vehicle_year)));
@@ -64,7 +67,8 @@ public class ModelStudentLocation {
         http_parameters.add( new BasicNameValuePair("first_name", first_name));
         http_parameters.add( new BasicNameValuePair("last_name" , last_name));
         http_parameters.add( new BasicNameValuePair("phone"     , phone_number));
-        http_parameters.add( new BasicNameValuePair("location"  , location));
+        http_parameters.add( new BasicNameValuePair("latitude"  , latitude));
+        http_parameters.add( new BasicNameValuePair("longitude"  , longitude));
         http_parameters.add( new BasicNameValuePair("service"   , services));
         http_parameters.add( new BasicNameValuePair("license"   , vehicle_license_number));
         http_parameters.add( new BasicNameValuePair("vehicle_year", Integer.toString(vehicle_year)));

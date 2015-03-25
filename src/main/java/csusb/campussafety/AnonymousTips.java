@@ -14,6 +14,7 @@ import android.widget.EditText;
 import models.ModelAnonTips;
 import network.BasicNetwork;
 import network.IGeneralRun;
+import utility.SimpleDialog;
 
 public class AnonymousTips extends Activity {
 
@@ -25,6 +26,10 @@ public class AnonymousTips extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anonymoustips_page); /// Set activity page
+
+        SimpleDialog.show("Anonymous Tips", "Together we can make our campus safer." +
+                "If you have any information of suspicious activity please report it." +
+                "All information is passed to the campus detective.  All information is confidential.", this);
 
         /** Initialize variables to get data from text-fields and get action from button */
         et_subject = (EditText) findViewById(R.id.et_anonymoustips_subject);
@@ -121,7 +126,7 @@ public class AnonymousTips extends Activity {
     private DialogInterface.OnClickListener alertdialog_onsucess = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
-            final Intent page = new Intent( AnonymousTips.this, MenuPage.class );
+            final Intent page = new Intent( AnonymousTips.this, Menu.class );
             startActivity( page );
             finish();
         }
@@ -144,7 +149,7 @@ public class AnonymousTips extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         /// Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_menu_page, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 

@@ -1,24 +1,14 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/csusb_background"
+    android:background="@drawable/aboutuspage"
     tools:context=".aboutus">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="100dp"
-        android:background="#DDEEEEEE">
-
-        <TextView
-            android:text="About Us"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="36sp"
-            android:textColor="#FFFFFF"
-            android:background="#000000"
-            android:gravity="center"/>
+        android:paddingTop="200dp">
 
         <LinearLayout
             android:orientation="vertical"

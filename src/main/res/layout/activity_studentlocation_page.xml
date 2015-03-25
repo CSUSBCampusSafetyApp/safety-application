@@ -54,17 +54,6 @@
         <Spinner
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spin_studentlocation_location"
-            android:background="#FFFFFF"
-            android:textColor="#000000"
-            android:textSize="@dimen/abc_text_size_display_1_material"
-            android:hint="Location"
-            android:padding="8dp"
-            android:layout_marginTop="4dp"/>
-
-        <Spinner
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/spin_studentlocation_service"
             android:background="#FFFFFF"
             android:textColor="#000000"
