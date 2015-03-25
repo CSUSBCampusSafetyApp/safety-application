@@ -78,11 +78,18 @@ public class StudentLocation extends Activity {
                 gps.showSettingsAlert();
             }
 
-            ModelStudentLocation m_studentloc = new ModelStudentLocation(et_firstname.getText().toString(), et_lastname.getText().toString(), et_phone_number.getText().toString(),
-                    latitude, longitude, spin_service.getSelectedItem().toString(),
-                    et_license.getText().toString(), Integer.parseInt(et_vehicle_year.getText().toString()), et_vehicle_make.getText().toString());
+            if( et_firstname.toString().length() > 0 && et_lastname.toString().length() > 0 && et_phone_number.getText().toString().length() > 0 && latitude.length() > 0 &&
+                     longitude.length() > 0 && spin_service.toString().length() > 0 && spin_service.toString().length() > 0 &&
+                    et_license.toString().length() > 0 && et_vehicle_year.getText().toString().length() > 0 && et_vehicle_make.toString().length() > 0) {
 
-            m_studentloc.save(after_save);
+                ModelStudentLocation m_studentloc = new ModelStudentLocation(et_firstname.getText().toString(), et_lastname.getText().toString(), et_phone_number.getText().toString(),
+                        latitude, longitude, spin_service.getSelectedItem().toString(),
+                        et_license.getText().toString(), Integer.parseInt(et_vehicle_year.getText().toString()), et_vehicle_make.getText().toString());
+
+                m_studentloc.save(after_save);
+            } else {
+                SimpleDialog.show("Empty Field", "A field was left empty", StudentLocation.this);
+            }
         }
     };
 
