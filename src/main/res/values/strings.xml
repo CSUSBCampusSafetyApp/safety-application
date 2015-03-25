@@ -47,6 +47,7 @@
     <string name="close">Close</string>
 
     <string-array name="menu_navigation_general_items">
+        <item>Menu</item>
         <item>About Us</item>
         <item>Services</item>
         <item>Anonymous Tips</item>

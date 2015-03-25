@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8ABFAF"
+    android:background="#89F"
     tools:context="customactivities.NavigationFragmentGeneral">
 
     <ListView

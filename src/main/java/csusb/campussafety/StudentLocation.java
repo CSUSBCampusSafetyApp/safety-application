@@ -1,6 +1,5 @@
 package csusb.campussafety;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,13 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import customactivities.NavigationGeneralActivity;
 import models.ModelStudentLocation;
 import gps.GPSTracker;
 import network.BasicNetwork;
 import network.IGeneralRun;
 import utility.SimpleDialog;
 
-public class StudentLocation extends Activity {
+public class StudentLocation extends NavigationGeneralActivity {
 
     private EditText et_firstname    = null;
     private EditText et_lastname     = null;
@@ -34,7 +35,7 @@ public class StudentLocation extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_studentlocation_page);
+        View v = setInnerLayout(R.layout.activity_studentlocation_page);
 
         //Page Description (AlertDialog Message)
         SimpleDialog.show("Student Location", "Here you can request a service from Campus Police. " +
@@ -42,13 +43,13 @@ public class StudentLocation extends Activity {
 
         gps = new GPSTracker(this);
 
-        et_phone_number = (EditText) findViewById(R.id.et_studentlocation_phone_number);
-        et_firstname    = (EditText) findViewById(R.id.et_studentlocation_firstname);
-        et_lastname     = (EditText) findViewById(R.id.et_studentlocation_lastname);
-        spin_service    = (Spinner) findViewById(R.id.spin_studentlocation_service);
-        et_license      = (EditText) findViewById(R.id.et_studentlocation_license);
-        et_vehicle_year     = (EditText) findViewById(R.id.et_studentlocation_vehicle_year);
-        et_vehicle_make     = (EditText) findViewById(R.id.et_studentlocation_vehicle_make);
+        et_phone_number = (EditText) v.findViewById(R.id.et_studentlocation_phone_number);
+        et_firstname    = (EditText) v.findViewById(R.id.et_studentlocation_firstname);
+        et_lastname     = (EditText) v.findViewById(R.id.et_studentlocation_lastname);
+        spin_service    = (Spinner)  v.findViewById(R.id.spin_studentlocation_service);
+        et_license      = (EditText) v.findViewById(R.id.et_studentlocation_license);
+        et_vehicle_year     = (EditText) v.findViewById(R.id.et_studentlocation_vehicle_year);
+        et_vehicle_make     = (EditText) v.findViewById(R.id.et_studentlocation_vehicle_make);
 
         final String[] values_services  = new String[] {"[Select Service]", "Escort", "Vehicle Unlock", "Battery Jump"};
 
@@ -61,7 +62,7 @@ public class StudentLocation extends Activity {
         spin_service.setAdapter(adapter_services);
         spin_service.setOnItemSelectedListener(oisl_item_chosen);
 
-        Button btn_submit = (Button) findViewById(R.id.btn_studentlocation_submit);
+        Button btn_submit = (Button) v.findViewById(R.id.btn_studentlocation_submit);
         btn_submit.setOnClickListener(cl_submit);
     }
 

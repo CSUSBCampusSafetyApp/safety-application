@@ -1,6 +1,5 @@
 package csusb.campussafety;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,12 +8,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import customactivities.NavigationGeneralActivity;
 import models.ModelAnonTips;
 import network.BasicNetwork;
 import network.IGeneralRun;
 import utility.SimpleDialog;
 
-public class AnonymousTips extends Activity {
+public class AnonymousTips extends NavigationGeneralActivity {
 
     private EditText et_subject = null;
     private EditText et_message = null;
@@ -23,16 +24,16 @@ public class AnonymousTips extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anonymoustips_page); /// Set activity page
+        View v = setInnerLayout(R.layout.activity_anonymoustips_page); /// Set activity page
 
         SimpleDialog.show("Anonymous Tips", "Together we can make our campus safer." +
                 "If you have any information of suspicious activity please report it." +
                 "All information is passed to the campus detective.  All information is confidential.", this);
 
         /** Initialize variables to get data from text-fields and get action from button */
-        et_subject = (EditText) findViewById(R.id.et_anonymoustips_subject);
-        et_message = (EditText) findViewById(R.id.et_anonymoustips_message);
-        Button btn_submit = (Button) findViewById(R.id.btn_anonymoustips_submit);
+        et_subject = (EditText) v.findViewById(R.id.et_anonymoustips_subject);
+        et_message = (EditText) v.findViewById(R.id.et_anonymoustips_message);
+        Button btn_submit = (Button) v.findViewById(R.id.btn_anonymoustips_submit);
 
         /** Set click/touch listener for when the user presses down on button */
         btn_submit.setOnClickListener(ocl_submit);

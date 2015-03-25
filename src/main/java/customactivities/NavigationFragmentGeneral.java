@@ -1,6 +1,5 @@
 package customactivities;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,20 +20,21 @@ public class NavigationFragmentGeneral extends Fragment {
     private ActionBarDrawerToggle mDrawerToggle;
 
     private boolean mUserLearnedDrawer;
+    private boolean mFromSavedInstanceState;
 
-    @SuppressLint("InflateParams")
+    public NavigationFragmentGeneral() {}
+
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        mUserLearnedDrawer = Boolean.valueOf(readToPreferences(getActivity(),KEY_USER_LEARNED_DRAWER, "false"));
+        if(savedInstanceState!= null)
+            mFromSavedInstanceState = true;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_navigation_general, null);
-    }
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-    @Override
-    public void setArguments(Bundle args) {
-
+        return inflater.inflate(R.layout.fragment_navigation_general, container, false);
     }
 
     public void setUp(int fragmentId, DrawerLayout drawerlayout, Toolbar toolbar) {
@@ -57,7 +57,6 @@ public class NavigationFragmentGeneral extends Fragment {
 
             public void onDrawerClosed(View drawerView){
                 super.onDrawerClosed(drawerView);
-
                 getActivity().invalidateOptionsMenu();
             }
 
@@ -66,9 +65,9 @@ public class NavigationFragmentGeneral extends Fragment {
         // if user has not learned the drawer and its the very first time the app is opened
         // open drawer by a animation
 
-        if (!mUserLearnedDrawer){
+        if (!mUserLearnedDrawer && !mFromSavedInstanceState)
             drawerlayout.openDrawer(containerView);
-        }
+
         drawerlayout.setDrawerListener(mDrawerToggle);
 
         drawerlayout.post(new Runnable() {
@@ -77,7 +76,7 @@ public class NavigationFragmentGeneral extends Fragment {
                 mDrawerToggle.syncState();
             }
 
-        }); // end pos new Runnable
+        });
     }
 
     public static void saveToPreferences(Context context, String preferenceName, String preferenceValue){
@@ -91,6 +90,12 @@ public class NavigationFragmentGeneral extends Fragment {
 
         editor.apply();
 
-    } // end saveToPreferences
+    }
+
+    public static String readToPreferences(Context context, String preferenceName, String defaultValue){
+
+        SharedPreferences sharedPreferences=context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(preferenceName,defaultValue);
+    }
 
 }

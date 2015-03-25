@@ -1,17 +1,18 @@
 package csusb.campussafety;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ExpandableListView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import customactivities.NavigationGeneralActivity;
 import customadapters.ExpandableListAdapter;
 
 
-public class Services extends Activity {
+public class Services extends NavigationGeneralActivity {
 
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listDataChild;
@@ -19,10 +20,10 @@ public class Services extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_services_page);
+        View v = setInnerLayout(R.layout.activity_services_page);
 
         // get the listview
-        ExpandableListView expListView = (ExpandableListView) findViewById(R.id.lvExp);
+        ExpandableListView expListView = (ExpandableListView) v.findViewById(R.id.lvExp);
 
         // preparing list data
         prepareListData();

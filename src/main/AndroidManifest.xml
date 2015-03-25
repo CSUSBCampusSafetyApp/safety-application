@@ -27,42 +27,42 @@
 
         <activity
             android:name=".AnonymousTips"
-            android:label="@string/app_name"
+            android:label="@string/tv_string_anonymoustips"
             android:screenOrientation="sensor">
         </activity>
 
         <activity
             android:name=".Resources"
-            android:label="@string/app_name"
+            android:label="@string/tv_string_resources"
             android:screenOrientation="sensor">
         </activity>
 
         <activity
             android:name=".Services"
-            android:label="@string/app_name" >
+            android:label="@string/tv_string_services" >
         </activity>
 
         <activity
             android:name=".StudentLocation"
-            android:label="@string/app_name"
+            android:label="@string/tv_string_locations"
             android:screenOrientation="sensor">
         </activity>
 
         <activity
             android:name=".AboutUs"
-            android:label="@string/app_name"
+            android:label="@string/tv_string_aboutus"
             android:screenOrientation="sensor">
         </activity>
 
         <activity
             android:name=".SecurityTips"
-            android:label="@string/app_name"
+            android:label="@string/tv_string_securitytips"
             android:screenOrientation="sensor">
         </activity>
 
         <activity
             android:name=".Reports"
-            android:label="@string/app_name"
+            android:label="@string/tv_string_reports"
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden">
         </activity>

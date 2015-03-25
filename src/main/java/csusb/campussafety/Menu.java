@@ -1,26 +1,26 @@
 package csusb.campussafety;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
+import customactivities.NavigationGeneralActivity;
 
 
-public class Menu extends Activity implements View.OnClickListener{
+public class Menu extends NavigationGeneralActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_page);
+        View v = setInnerLayout(R.layout.activity_menu_page);
 
-        RelativeLayout btn_aboutus    = (RelativeLayout) findViewById(R.id.aboutus);
-        RelativeLayout btn_services   = (RelativeLayout) findViewById(R.id.services);
-        RelativeLayout btn_resources  = (RelativeLayout) findViewById(R.id.resources);
-        RelativeLayout btn_tips       = (RelativeLayout) findViewById(R.id.tips);
-        RelativeLayout btn_locations  = (RelativeLayout) findViewById(R.id.locations);
-        RelativeLayout btn_safetytips = (RelativeLayout) findViewById(R.id.safetytips);
-        RelativeLayout btn_reports    = (RelativeLayout) findViewById(R.id.reports);
+        RelativeLayout btn_aboutus    = (RelativeLayout) v.findViewById(R.id.aboutus);
+        RelativeLayout btn_services   = (RelativeLayout) v.findViewById(R.id.services);
+        RelativeLayout btn_resources  = (RelativeLayout) v.findViewById(R.id.resources);
+        RelativeLayout btn_tips       = (RelativeLayout) v.findViewById(R.id.tips);
+        RelativeLayout btn_locations  = (RelativeLayout) v.findViewById(R.id.locations);
+        RelativeLayout btn_safetytips = (RelativeLayout) v.findViewById(R.id.safetytips);
+        RelativeLayout btn_reports    = (RelativeLayout) v.findViewById(R.id.reports);
 
         btn_aboutus.setOnClickListener(this);
         btn_services.setOnClickListener(this);

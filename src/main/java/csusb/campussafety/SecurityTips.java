@@ -1,15 +1,16 @@
 package csusb.campussafety;
 
-import android.app.Activity;
+
 import android.os.Bundle;
+import customactivities.NavigationGeneralActivity;
 
 
-public class SecurityTips extends Activity {
+public class SecurityTips extends NavigationGeneralActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_security_tips_page);
+        setInnerLayout(R.layout.activity_security_tips_page);
     }
 
 }
