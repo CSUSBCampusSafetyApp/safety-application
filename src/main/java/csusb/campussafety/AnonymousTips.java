@@ -6,8 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -145,7 +143,7 @@ public class AnonymousTips extends Activity {
     /**
      * No intention to implement (atm) but this is the sub-menu for the activity page
      */
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         /// Inflate the menu; this adds items to the action bar if it is present.
@@ -164,4 +162,5 @@ public class AnonymousTips extends Activity {
         return id == R.id.action_settings || super.onOptionsItemSelected(item);
 
     }
+    */
 }
