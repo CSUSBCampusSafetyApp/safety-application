@@ -126,7 +126,7 @@ public class AnonymousTips extends Activity {
     private DialogInterface.OnClickListener alertdialog_onsucess = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
-            final Intent page = new Intent( AnonymousTips.this, Menu.class );
+            final Intent page = new Intent( AnonymousTips.this, csusb.campussafety.Menu.class);
             startActivity( page );
             finish();
         }

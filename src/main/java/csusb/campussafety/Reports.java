@@ -2,6 +2,7 @@ package csusb.campussafety;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -15,6 +16,7 @@ public class Reports extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reports_page);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         WebView web_view = (WebView) findViewById(R.id.wv_reports);
         web_view.getSettings().setJavaScriptEnabled(true);
