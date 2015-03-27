@@ -27,7 +27,6 @@ public class Services extends NavigationGeneralActivity {
 
         // preparing list data
         prepareListData();
-
         ExpandableListAdapter listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
 
         // setting list adapter

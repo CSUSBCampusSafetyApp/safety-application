@@ -16,11 +16,11 @@ import network.NetworkDef;
 import network.SimpleNetwork;
 
 /**
- * Model class that handles the form data to be stored via database
+ * ModelAnonTips class that handles the form data to be stored via database
  * Sanitize is done server side.
  */
 
-public class ModelAnonTips {
+public class ModelAnonTips extends Model {
 
     private String subject;
     private String message;

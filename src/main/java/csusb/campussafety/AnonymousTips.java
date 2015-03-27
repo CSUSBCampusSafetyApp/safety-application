@@ -1,6 +1,5 @@
 package csusb.campussafety;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +12,7 @@ import customactivities.NavigationGeneralActivity;
 import models.ModelAnonTips;
 import network.BasicNetwork;
 import network.IGeneralRun;
+import utility.ConfirmDialog;
 import utility.SimpleDialog;
 
 public class AnonymousTips extends NavigationGeneralActivity {
@@ -65,18 +65,14 @@ public class AnonymousTips extends NavigationGeneralActivity {
             if( exist_subject && exist_message ) {
                 /**
                  *  Create a continue/stop dialog box for the user to choose from.  The dialog box
-                 *  confirms the users intention to send the message. The Model handles the data
+                 *  confirms the users intention to send the message. The ModelFunc handles the data
                  *  asynchronously the moment "continue" is chosen and displays that the send is
                  *  in progress. When the send is complete the user is prompt that the task has
                  *  finished and exits the to the main activity.
                  */
 
-                AlertDialog.Builder user_alert_tosend = new AlertDialog.Builder(AnonymousTips.this);
                 model = new ModelAnonTips(et_subject.getText().toString(), et_message.getText().toString());
-                user_alert_tosend.setMessage("Tap \"Continue\" to send")
-                        .setPositiveButton("Continue", alertdialog_oncontinue)
-                        .setNegativeButton("Stop", null)
-                        .setCancelable(false).show(); // User can't cancel by touching off dialog box
+                ConfirmDialog.show("Tap \"Continue\" to send", onContinue, AnonymousTips.this);
             }
             else {
                 Log.e("Button:Submit", "Unable to submit data!");
@@ -85,7 +81,7 @@ public class AnonymousTips extends NavigationGeneralActivity {
     };
 
     // Handles when a user chooses "Continue" when trying to submit tip.
-    private DialogInterface.OnClickListener alertdialog_oncontinue = new DialogInterface.OnClickListener() {
+    private DialogInterface.OnClickListener onContinue = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             if(model != null) {
@@ -104,25 +100,20 @@ public class AnonymousTips extends NavigationGeneralActivity {
         public void execute(BasicNetwork request, Object o) {
             // request = null
             boolean success = (boolean)o;
-            final AlertDialog.Builder user_alert = new AlertDialog.Builder(AnonymousTips.this);
 
             if(success) {
                 Log.i("(Success)Going to...", "AnonymousTips");
-                user_alert.setMessage("Your tip has been successfully sent!")
-                        .setNeutralButton("Continue", alertdialog_onsucess)
-                        .setCancelable(false).show();
+                SimpleDialog.show(onSuccess, "", "Your tip has been successfully sent!", AnonymousTips.this);
             }
             else {
                 Log.i("(Failed)Going to...", "AnonymousTips");
-                user_alert.setMessage("Your tip was not successfully sent! This could be a server error sorry for the inconvenience. Try again!")
-                        .setNeutralButton("Continue", alertdialog_onfail)
-                        .setCancelable(false).show();
+                SimpleDialog.show(onFail, "", "Your tip was not successfully sent! This could be a server error sorry for the inconvenience. Try again!", AnonymousTips.this);
             }
         }
     };
 
     // Goes to the next activity if send was successful.
-    private DialogInterface.OnClickListener alertdialog_onsucess = new DialogInterface.OnClickListener() {
+    private DialogInterface.OnClickListener onSuccess = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             final Intent page = new Intent( AnonymousTips.this, csusb.campussafety.Menu.class);
@@ -132,7 +123,7 @@ public class AnonymousTips extends NavigationGeneralActivity {
     };
 
     // Goes to the next activity if send failed.
-    private DialogInterface.OnClickListener alertdialog_onfail = new DialogInterface.OnClickListener() {
+    private DialogInterface.OnClickListener onFail = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             final Intent page = new Intent( AnonymousTips.this, AnonymousTips.class );
